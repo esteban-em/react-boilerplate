@@ -9,7 +9,7 @@ import {
   Link
 } from 'react-router-dom'
 
-
+const theDarkSide = document.querySelector('#darksideofthemoon');
 import './App.css';
 
 class App extends Component {
@@ -25,6 +25,15 @@ class App extends Component {
   }
 
   render() {
+    setInterval(function(){
+      if(window.location.pathname === "/upload" ) {
+        theDarkSide.style.display = 'block';
+      } else {
+        theDarkSide.style.display = 'none';
+      };
+    }, 500);
+
+
     return (
         <Router>
           <div className="App">

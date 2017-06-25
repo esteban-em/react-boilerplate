@@ -75,6 +75,7 @@ input, button, select {
 
 .md-RichEditor-root {
   padding: 15px 50px !important;
+  border-radius: 15px;
 }
 
 .home-body {
@@ -124,5 +125,49 @@ input, button, select {
 }
 
 #darksideofthemoon {
+  margin: 30px auto;
+  width: 90%;
+  border-radius: 20px;
+  padding: 50px;
+  background-color: white;
   display: none;
+  text-align: center;
+}
+
+#wrapper-image {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#texte-image {
+  width: 40%;
+}
+
+#imageDiv {
+  width: 40%;
+}
+
+#inputImage {
+  padding: 5px;
+  min-height: 30px;
+  border-radius: 10px;
+  width: 80%;
+}
+
+#analyzer {
+  padding: 10px 30px;
+  background-color: #FFC95C;
+  border-radius: 15px;
+  color: white;
+  border: none;
+}
+
+#wrapper-text * {
+  margin-top: 20px;
+}
+
+#wrapper-text h1 {
+  font-size: 3rem;
 }

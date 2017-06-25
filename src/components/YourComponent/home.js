@@ -20,7 +20,7 @@ export default class Home extends React.Component {
           <div className="home-box">
             <Image src="./inbox.png" size="tiny"/>
             <h2>Upload</h2>
-            <p>Convert your word documents or image to HTML in one click.</p>
+            <p>Convert your images to HTML document in one click.</p>
             <Link to="/upload">Upload</Link>
           </div>
 
