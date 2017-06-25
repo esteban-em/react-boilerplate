@@ -55,6 +55,53 @@
         .done(function(data) {
             // Show formatted JSON on webpage.
             $("#responseTextArea").val(JSON.stringify(data, null, 2));
+
+            var str_ = {};
+            var lines =[];
+
+            $.each(data, function(i, item) {
+
+                    if(i == 'regions') {
+
+                        $.each(item, function(i, l){
+
+                            $.each(l.lines, function(i, l){
+                                var words = "";
+
+                                $.each(l.words, function(i,w){
+
+
+                                    if(i == l.words.length-1) {
+
+                                         words+= w.text;
+
+                                    }
+                                    else {
+
+                                        words+= w.text+" ";
+
+                                    }
+
+                                })
+
+                                lines.push(words);
+
+                            })
+                        })
+                    }
+
+
+            })
+
+            console.log(lines);
+
+            $.each(lines, function(i, l){
+                $("#texte-image").append('\n');
+                 $("#texte-image").append(l);
+
+            })
+
+
         })
 
         .fail(function(jqXHR, textStatus, errorThrown) {
@@ -78,6 +125,7 @@ Image to analyze: <input type="text" name="inputImage" id="inputImage" value="ht
         <br><br>
         <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
     </div>
+    <div id="texte-image"></div>
     <div id="imageDiv" style="width:420px; display:table-cell;">
         Source image:
         <br><br>

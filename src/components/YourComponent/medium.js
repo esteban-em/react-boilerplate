@@ -42,7 +42,7 @@ export default class Medium extends React.Component {
   render() {
     const { editorState } = this.state;
     return (
-      <div>
+      <div className="medium-editor">
       <Editor
         ref="editor"
         editorState={editorState}

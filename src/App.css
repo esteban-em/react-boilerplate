@@ -1,13 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background: #78C6FF;
+  color: #444444;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+}
+
+input, button, select {
+  font-size: 1.6rem;
+}
+
+.public-DraftEditor-content h1 {
+  font-size: 4rem !important;
+}
+
+.public-DraftEditor-content h2 {
+  font-size: 3.5rem !important;
+}
+
+.public-DraftEditor-content h3 {
+  font-size: 3.2rem !important;
+}
+
+.public-DraftEditor-content h4 {
+  font-size: 3rem !important;
+}
+
+.public-DraftEditor-content h5 {
+  font-size: 2.7rem !important;
+}
+
+.public-DraftEditor-content h6 {
+  font-size: 2.5rem !important;
+}
+
 
 .title-bar {
+  background-color: white;
   color: #444444;
   width: 100%;
   border-bottom: 1px solid #f2f2f2;
-}
-
-.title-bar__subtitle {
-  font-size: 1.3rem;
-  font-weight: 400;
 }
 
 .wrapper {
@@ -20,7 +60,7 @@
 
 .title-bar__links {
   width: 20%;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   display: flex;
   justify-content: space-between;
 }
@@ -31,4 +71,58 @@
 
 .medium-editor {
   padding: 100px !important;
+}
+
+.md-RichEditor-root {
+  padding: 15px 50px !important;
+}
+
+.home-body {
+  padding: 100px;
+}
+
+.home-body h1 {
+  text-align: center;
+  font-size: 5rem;
+  padding-bottom: 50px;
+  color: white;
+}
+
+.home-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.home-box img {
+  margin: auto;
+}
+
+.home-box {
+  background-color: white;
+  text-align: center;
+  width: 40%;
+  padding: 40px  20px;
+  border: 1px solid #f2f2f2;
+  border-radius: 15px;
+}
+
+.home-box h2 {
+  margin-top: 40px;
+  font-size: 3rem;
+}
+
+.home-box a {
+  padding: 10px 30px;
+  background-color: #FFC95C;
+  border-radius: 15px;
+  color: white;
+}
+
+.home-box p {
+  font-size: 2rem;
+  padding-bottom: 20px;
+}
+
+#darksideofthemoon {
+  display: none;
 }

@@ -5,19 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/rainbow2.png">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <title>Rainbow</title>
   </head>
   <body>
+    <script type="text/javascript">
+        function processImage() {
+            var subscriptionKey = "b78b0f074a064615b589403f150053ae";
+            var uriBase = "https://westeurope.api.cognitive.microsoft.com/vision/v1.0/ocr";
+
+            // Request parameters.
+            var params = {
+                "visualFeatures": "Categories,Description,Color",
+                "details": "",
+                "language": "en",
+            };
+
+            // Display the image.
+            var sourceImageUrl = document.getElementById("inputImage").value;
+            document.querySelector("#sourceImage").src = sourceImageUrl;
+
+            // Perform the REST API call.
+            $.ajax({
+                url: uriBase + "?" + $.param(params),
+
+                // Request headers.
+                beforeSend: function(xhrObj){
+                    xhrObj.setRequestHeader("Content-Type","application/json");
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+                },
+
+                type: "POST",
+
+                // Request body.
+                data: '{"url": ' + '"' + sourceImageUrl + '"}',
+            })
+
+            .done(function(data) {
+                // Show formatted JSON on webpage.
+                $("#responseTextArea").val(JSON.stringify(data, null, 2));
+
+                var str_ = {};
+                var lines =[];
+
+                $.each(data, function(i, item) {
+
+                        if(i == 'regions') {
+
+                            $.each(item, function(i, l){
+
+                                $.each(l.lines, function(i, l){
+                                    var words = "";
+
+                                    $.each(l.words, function(i,w){
+
+
+                                        if(i == l.words.length-1) {
+
+                                             words+= w.text;
+
+                                        }
+                                        else {
+
+                                            words+= w.text+" ";
+
+                                        }
+
+                                    })
+
+                                    lines.push(words);
+
+                                })
+                            })
+                        }
+
+
+                })
+
+                console.log(lines);
+
+                $.each(lines, function(i, l){
+                    $("#texte-image").append('\n');
+                     $("#texte-image").append(l);
+
+                })
+
+
+            })
+
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                // Display error message.
+                var errorString = (errorThrown === "") ? "Error. " : errorThrown + " (" + jqXHR.status + "): ";
+                errorString += (jqXHR.responseText === "") ? "" : jQuery.parseJSON(jqXHR.responseText).message;
+                alert(errorString);
+            });
+        };
+    </script>
     <div id="root"></div>
+
+    <div id="darksideofthemoon">
+      <h1>Analyze image:</h1>
+      Enter the URL to an image of a natural or artificial landmark, then click the <strong>Analyze image</strong> button.
+      <br><br>
+      Image to analyze: <input type="text" name="inputImage" id="inputImage" value="https://github.com/carbontracking/codefest/blob/master/Example_01_deux_colonnes.png?raw=true" />
+      <button onclick="processImage()">Analyze image</button>
+      <br><br>
+      <div id="wrapper" style="width:1020px; display:table;">
+          <div id="texte-image"></div>
+          <div id="imageDiv" style="width:420px; display:table-cell;">
+              Source image:
+              <br><br>
+              <img id="sourceImage" width="400" />
+          </div>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

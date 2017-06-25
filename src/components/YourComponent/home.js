@@ -1,10 +1,9 @@
 import React from 'react';
 import { Image }  from 'semantic-ui-react';
-import UploadImage from './upload_image';
 import 'semantic-ui-css/semantic.min.css';
 import { Link } from 'react-router-dom';
 
-export default class Upload extends React.Component {
+export default class Home extends React.Component {
   render() {
     return (
       <div className="home-body">
@@ -12,7 +11,10 @@ export default class Upload extends React.Component {
         <div className="home-wrapper">
 
           <div className="home-box">
-            <UploadImage/>
+            <Image src="./pencil.png" size="tiny"/>
+            <h2>Edit</h2>
+            <p>Start a document from scratch or copy paste it from the web.</p>
+            <Link to="/editor">Editor</Link>
           </div>
 
           <div className="home-box">
