@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Medium            from "./components/YourComponent/medium";
+import ToolBar from "./components/YourComponent/toolbar";
 
 
 import './App.css';
@@ -19,7 +20,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Medium />
+        <ToolBar title="rainbow" />
+        <div className="medium-editor">
+          <Medium/>
+        </div>
       </div>
     );
   }
