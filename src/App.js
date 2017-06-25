@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import CodeFest             from "./components/CodeFest/CodeFest"
+import Medium            from "./components/YourComponent/medium";
+
 
 import './App.css';
 
@@ -18,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CodeFest />
+        <Medium />
       </div>
     );
   }
